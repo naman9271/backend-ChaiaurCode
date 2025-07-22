@@ -7,8 +7,8 @@
    - jsonwebtokens - 
    - used by pre hook in mongoogse -- data save hone se just pehle ye chl jayega
    jwt ke aage se smjh nhi aaya 39 min acess token refresh token
-   - 
-   - 
-   - 
-   - 
+- **Lecture 10**: 
+   - express-fileuplaod/ multer for uploading files
+   - cloudinary for uplaod thing
+   - multer dubara smjho
    - 
