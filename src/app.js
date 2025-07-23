@@ -1,6 +1,6 @@
 import express from 'express';
 import cors from 'cors';
-import cookiesParser from 'cookies-parser';
+import cookieParser from 'cookie-parser';
 
 const app = express();
 // to connect with frontend
@@ -17,6 +17,15 @@ app.use(express.urlencoded({ extended: true, limit: '16kb' }));
 //to store data
 app.use(express.static('public'));
 // to read data from cokkies
-app.use(cookiesParser());
+app.use(cookieParser());
+
+
+//routes import 
+import userRoutes from './routes/user.routes.js';
+
+//declaring routes
+app.use("/api/v1/users", userRoutes)
+
+//http://localhost:8000/api/v1/users/register
 
 export { app };
