@@ -19,12 +19,11 @@ app.use(express.static('public'));
 // to read data from cokkies
 app.use(cookieParser());
 
-
-//routes import 
+//routes import
 import userRoutes from './routes/user.routes.js';
 
 //declaring routes
-app.use("/api/v1/users", userRoutes)
+app.use('/api/v1/users', userRoutes);
 
 //http://localhost:8000/api/v1/users/register
 

@@ -48,43 +48,43 @@ const userSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-userSchema.pre("save",async function(next){
-  if(!this.isModified("password")) return next()
+userSchema.pre('save', async function (next) {
+  if (!this.isModified('password')) return next();
 
-  this.password = bcrypt.hash(this.password, 10)
-  next()
-})
+  this.password = bcrypt.hash(this.password, 10);
+  next();
+});
 
-userSchema.methods.isPasswordCorrect = async function(password){
-  return await bcrypt.compare(password, this.password)
-}
+userSchema.methods.isPasswordCorrect = async function (password) {
+  return await bcrypt.compare(password, this.password);
+};
 
-userSchema.methods.generateAccessToken= function(){ //contains more info and also get updated fastly 
+userSchema.methods.generateAccessToken = function () {
+  //contains more info and also get updated fastly
   return jwt.sign(
     {
       _id: this._id,
       email: this.email,
       username: this.username,
-      fullName: this.fullName
+      fullName: this.fullName,
     },
     process.env.ACCESS_TOKEN_SECRET,
     {
-      expiresIn: process.env.ACCESS_TOKEN_EXPIRY
+      expiresIn: process.env.ACCESS_TOKEN_EXPIRY,
     }
-  )
-}
-userSchema.methods.generateRefreshToken= function(){ //contanins less info as it refresh again and again that's why it's expiry is high
-    return jwt.sign(
+  );
+};
+userSchema.methods.generateRefreshToken = function () {
+  //contanins less info as it refresh again and again that's why it's expiry is high
+  return jwt.sign(
     {
       _id: this._id,
     },
     process.env.REFRESH_TOKEN_SECRET,
     {
-      expiresIn: process.env.REFRESH_TOKEN_EXPIRY
+      expiresIn: process.env.REFRESH_TOKEN_EXPIRY,
     }
-  )
-}
+  );
+};
 
 export const User = mongoose.model('User', userSchema);
-
-
