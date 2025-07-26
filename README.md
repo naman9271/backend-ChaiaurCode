@@ -15,5 +15,4 @@
 - **Lecture 12**:
   - revise it crazy
 
-- **Lecture 13**:
-  -
+- ## **Lecture 13**:
